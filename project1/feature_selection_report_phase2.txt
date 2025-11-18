@@ -1,0 +1,32 @@
+PHASE 2 - FEATURE SELECTION REPORT
+============================================================
+
+Correlation Matrix: 100% hand-crafted (no np.corrcoef or pandas.corr used)
+Threshold for high correlation: |r| >= 0.5
+
+Highly correlated pairs found:
+   std_intensity ↔ hue_mean: 0.739
+   std_intensity ↔ contrast: 0.814
+   std_intensity ↔ homogeneity: 0.577
+   std_intensity ↔ energy: 0.713
+   std_intensity ↔ entropy: 0.841
+   skewness ↔ kurtosis: 0.554
+   hue_mean ↔ contrast: 0.718
+   contrast ↔ homogeneity: 0.794
+   contrast ↔ energy: 0.685
+   contrast ↔ entropy: 0.799
+   homogeneity ↔ energy: 0.870
+   homogeneity ↔ entropy: 0.866
+   energy ↔ entropy: 0.963
+
+Removed redundant features: ['contrast', 'energy', 'std_intensity', 'kurtosis', 'entropy']
+Final selected features (4): ['mean_intensity', 'skewness', 'hue_mean', 'homogeneity']
+
+Selection Strategy:
+- Greedy elimination of features with |correlation| >= 0.5
+- When conflict, remove the feature with higher average correlation to others
+- Ensures minimal redundancy and maximal discriminative power for clustering
+- At least 3 features guaranteed
+
+This subset has the lowest inter-feature correlation while preserving texture information.
+Ready for Phase 3: Unsupervised Clustering
